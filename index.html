@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+  <title>Guestbook</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let Engine = Matter.Engine;
+    let World = Matter.World;
+    let Bodies = Matter.Bodies;
+    let engine;
+    let world;
+    let messages = [];
+    let ground;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      engine = Engine.create();
+      world = engine.world;
+      Engine.run(engine);
+      ground = Bodies.rectangle(width / 2, height - 10, width, 20, { isStatic: true });
+      World.add(world, ground);
+      loadMessages();
+    }
+
+    function draw() {
+      background(0);
+      fill(255);
+      textSize(24);
+      textAlign(CENTER, CENTER);
+
+      for (let i = 0; i < messages.length; i++) {
+        let message = messages[i];
+        text(message.text, message.body.position.x, message.body.position.y);
+      }
+
+      rectMode(CENTER);
+      fill(128);
+      rect(ground.position.x, ground.position.y, width, 20);
+    }
+
+    function loadMessages() {
+      let storedMessages = localStorage.getItem('guestbook');
+      if (storedMessages) {
+        messages = JSON.parse(storedMessages);
+        for (let i = 0; i < messages.length; i++) {
+          let message = messages[i];
+          let messageBody = Bodies.rectangle(message.x, message.y, 200, 50);
+          World.add(world, messageBody);
+          message.body = messageBody;
+        }
+      }
+    }
+
+    function saveMessage() {
+      let input = document.getElementById('messageInput');
+      if (input) {
+        let messageText = input.value;
+        if (messageText !== '') {
+          let message = {
+            text: messageText,
+            x: random(width),
+            y: random(height),
+            body: null
+          };
+          let messageBody = Bodies.rectangle(message.x, message.y, 200, 50);
+          World.add(world, messageBody);
+          message.body = messageBody;
+          messages.push(message);
+          localStorage.setItem('guestbook', JSON.stringify(messages, getCircularReplacer()));
+          input.value = '';
+        }
+      } else {
+        console.error("Cannot find input element with id 'messageInput'");
+      }
+    }
+
+    function getCircularReplacer() {
+      const seen = new WeakSet();
+      return (key, value) => {
+        if (typeof value === "object" && value !== null) {
+          if (seen.has(value)) {
+            return;
+          }
+          seen.add(value);
+        }
+        return value;
+      };
+    }
+
+    function resetMessages() {
+      messages = [];
+      localStorage.removeItem('guestbook');
+    }
+
+    function keyPressed() {
+      if (keyCode === ENTER) {
+        saveMessage();
+      }
+    }
+  </script>
+
+  <div>
+    <input id="messageInput" type="text" placeholder="Leave a message" onkeydown="keyPressed()">
+    <button onclick="saveMessage()">Submit</button>
+    <button onclick="resetMessages()">Reset</button>
+
+  </div>
+</body>
+</html>
