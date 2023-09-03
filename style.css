@@ -76,7 +76,7 @@ header {
     top:0;
     /* width: 100px;
     height: 50px; */
-    background: url(/src/neo_kr_logo_01.svg) center/ contain no-repeat;
+    background: url('../src/neo_kr_logo_01.svg') center/ contain no-repeat;
     width: calc(100% * 195/400);
     height: calc(100% * 103/308);
     
@@ -84,7 +84,7 @@ header {
   .neokorea-logo .symbol-2 {
     position: absolute;
     bottom: 0;
-    background: url(/src/neo_kr_logo_02.svg) center/ contain no-repeat;  
+    background: url('../src/neo_kr_logo_02.svg') center/ contain no-repeat;  
     width: calc(100% * 195/400);
     height: calc(100% * 195/308);
     transform: translate(0,0);
