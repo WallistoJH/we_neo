@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    background: #000;
+}
+
+*{
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+
+
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+
+
+  main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  
+  canvas {
+    /* margin: 20px auto; */
+  }
+  
+  button {
+    color: white;
+    background: orange;
+    border: none;
+    padding: 10px;
+    font-weight: 300;
+    font-size: 1.2em;
+    font-family: 'Lato';
+    margin: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+
+
+
+
+
+
+header {
+  
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* background: #333; */
+    min-height: 50px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+  .neokorea-logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* width: 100%; */
+    width: calc(100% * 192/1512);
+    margin: 0 auto;
+    height:0;
+    padding-bottom: calc(100% * 150/1512);
+    /* background-color: #999; */
+  }
+  .neokorea-logo .symbol-1 {
+    position: absolute;
+    top:0;
+    /* width: 100px;
+    height: 50px; */
+    background: url(/src/neo_kr_logo_01.svg) center/ contain no-repeat;
+    width: calc(100% * 195/400);
+    height: calc(100% * 103/308);
+    
+  }
+  .neokorea-logo .symbol-2 {
+    position: absolute;
+    bottom: 0;
+    background: url(/src/neo_kr_logo_02.svg) center/ contain no-repeat;  
+    width: calc(100% * 195/400);
+    height: calc(100% * 195/308);
+    transform: translate(0,0);
+  }
+  .neokorea-logo .symbol-1.pos-01 { left: 0; }
+  .neokorea-logo .symbol-1.pos-02 { right: 0; }
+  .neokorea-logo .symbol-2.pos-03 { left: 0; }
+  .neokorea-logo .symbol-2.pos-04 { right: 0; }
+
+
+  .neokorea-logo .symbol-1.pos-01 {
+    animation: 1s pos1 infinite alternate ease-in-out;
+  }
+  .neokorea-logo .symbol-1.pos-02 {
+    animation: 1s pos2 infinite alternate ease-in-out;
+  }
+  .neokorea-logo .symbol-2.pos-03 {
+    animation: 1s pos3 infinite alternate ease-in-out;
+  }
+  .neokorea-logo .symbol-2.pos-04 {
+    animation: 1s pos4 infinite alternate ease-in-out;
+  }
+
+
+  @keyframes pos1 {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(calc(100% * 420/400), calc(100% * 608/308)) }
+  }
+  @keyframes pos2 {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(calc(100% * -420/400), calc(-100% * (-608/308)) ) }
+  }
+
+
+
+  @keyframes pos3 {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(calc(100% * 420/400), calc(-100% * (178/308)) ) }
+  }
+  @keyframes pos4 {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(calc(100% * -420/400), calc(-100% * (178/308)) ) }
+  }
+
+  .neokorea-logo .symbol-1,
+  .neokorea-logo .symbol-2 { animation-duration: 1s !important;}
+
+
+
+
+
+
+  .neokorea-text {
+
+  }
+  .text-wrap {
+    white-space: nowrap;
+    font-size: 0;
+    margin-top: 16px;
+    margin-bottom: 27px;
+  }
+  .text-wrap > p {
+    display: inline-block;
+    font-size: 40px;
+    line-height: 48px;
+    vertical-align: middle;
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    animation: 10s marquee infinite linear;
+  }
+
+
+  @keyframes marquee {
+    0% { transform: translateX(0);}
+    100% { transform: translateX(-100%);}
+  }
+
+
+
+
+
+
+  #NameInput {
+    position: absolute;
+    top: 290px !important;
+    right: 0 !important;
+    left: 0 !important;
+    max-width: 150px;
+    margin: 0 auto;
+    background: none;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: white;
+    border: none;
+    outline: none;
+    border-bottom: 4px solid #fff;
+    /* animation: 1s cursor infinite linear; */
+  }
+  #NameInput:focus {
+    /* animation: none; */
+    border-bottom: 4px solid #fff;
+  }
+
+  #NameButton {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none !important;
+    border-bottom: 4px solid #fff;
+  }
+
+
+  @keyframes cursor {
+    0% { border-bottom-color: transparent; }
+    50% { border-bottom-color: transparent; }
+    50.1% { border-bottom-color: #fff; }
+    100% { border-bottom-color: #fff; }
+  }
+  
+
+
+#NameInput::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #fff;
+  animation: 1s cursor infinite linear;
+  content: '';
+}
+
+
+
+
+
+
+#ResetButton {
+  position: fixed;
+  z-index: 111;
+  right: 0;
+  top: 0;
+  height: auto;
+  font-size: 40px;
+  line-height: 48px;
+  padding: 0 16px 8px;
+  margin-right: 24px;
+  background: #000;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  opacity: 0;
+}
+#ResetButton:hover {
+  opacity: 1;
+}
