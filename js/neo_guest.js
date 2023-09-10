@@ -88,8 +88,8 @@ function setup() {
 // _______________
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-//   alert('창크기가 변경되어 새로고침합니다.');
-//   location.reload();
+  alert('창크기가 변경되어 새로고침합니다.');
+  location.reload();
 }
 
 
