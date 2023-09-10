@@ -89,15 +89,15 @@ main {
 }
 .nk-header .text-wrap__logo.logo-01 {
   width: 329px;
-  background-image: url('https://wallistojh.github.io/we_neo/src/logotype-01.svg');
+  background-image: url('../src/logotype-01.svg');
 }
 .nk-header .text-wrap__logo.logo-02 {
   width: 237px;
-  background-image: url('https://wallistojh.github.io/we_neo/src/logotype-02.svg');
+  background-image: url('../src/logotype-02.svg');
 }
 .nk-header .text-wrap__logo.logo-03 {
   width: 334px;
-  background-image: url('https://wallistojh.github.io/we_neo/src/logotype-03.svg');
+  background-image: url('../src/logotype-03.svg');
 }
 @-webkit-keyframes marquee {
   0% {
@@ -139,7 +139,7 @@ main {
 .nk-header .nk-logo .symbol-1 {
   position: absolute;
   top:0;
-  background: url('https://wallistojh.github.io/we_neo/src/neo_kr_logo_01.svg') center/ contain no-repeat;
+  background: url('../src/neo_kr_logo_01.svg') center/ contain no-repeat;
   width: -webkit-calc(100% * 195/400);
   width: -moz-calc(100% * 195/400);
   width: calc(100% * 195/400);
@@ -150,7 +150,7 @@ main {
 .nk-header .nk-logo .symbol-2 {
   position: absolute;
   bottom: 0;
-  background: url('https://wallistojh.github.io/we_neo/src/neo_kr_logo_02.svg') center/ contain no-repeat;  
+  background: url('../src/neo_kr_logo_02.svg') center/ contain no-repeat;  
   width: -webkit-calc(100% * 195/400);
   width: -moz-calc(100% * 195/400);
   width: calc(100% * 195/400);
