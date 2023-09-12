@@ -77,7 +77,8 @@ function setup() {
   // 마우스 제약 설정
   let canvasMouse = Mouse.create(canvas.elt);
   let mouseOptions = {
-    mouse: canvasMouse
+    mouse: canvasMouse,
+    passive: true
   };
   mouseConstraint = MouseConstraint.create(engine, mouseOptions);
   World.add(world, mouseConstraint);
